@@ -1,0 +1,86 @@
+<interface>
+  <object id="window" class="GtkWindow">
+    <property name="visible">True</property>
+    <property name="title">Lista Encadeada</property>
+    <property name="border-width">20</property>
+    <child>
+      <object id="grid" class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="margin">5</property>
+        <property name="row-spacing">10</property>
+        <property name="column-spacing">10</property>
+
+        <!-- Botão Adicionar Valor -->
+        <child>
+          <object id="AdicionarValor" class="GtkButton">
+            <property name="visible">True</property>
+            <property name="label">Adicionar Valor</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">0</property>
+          </packing>
+        </child>
+
+        <!-- Botão Remover Valor -->
+        <child>
+          <object id="RemoverValor" class="GtkButton">
+            <property name="visible">True</property>
+            <property name="label">Remover Valor</property>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">0</property>
+          </packing>
+        </child>
+
+        <!-- Botão Exibir Valores -->
+        <child>
+          <object id="ExibirValores" class="GtkButton">
+            <property name="visible">True</property>
+            <property name="label">Exibir Valores</property>
+          </object>
+          <packing>
+            <property name="left-attach">2</property>
+            <property name="top-attach">0</property>
+          </packing>
+        </child>
+
+        <!-- Botão Quit -->
+        <child>
+          <object id="quit" class="GtkButton">
+            <property name="visible">True</property>
+            <property name="label">Quit</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">1</property>
+            <property name="width">3</property>
+          </packing>
+        </child>
+
+        <!-- GtkScrolledWindow para área de log -->
+        <child>
+          <object id="log_scrolled_window" class="GtkScrolledWindow">
+            <property name="visible">True</property>
+            <property name="hscrollbar-policy">automatic</property>
+            <property name="vscrollbar-policy">automatic</property>
+            <child>
+              <object id="log_view" class="GtkTextView">
+                <property name="visible">True</property>
+                <property name="editable">False</property>
+                <property name="wrap-mode">word</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">2</property>
+            <property name="width">5</property>
+            <property name="height">50</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
