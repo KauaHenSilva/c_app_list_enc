@@ -16,7 +16,7 @@ The project was developed in the Ubuntu environment, so the commands may vary ac
   sudo apt install build-essential
   ```
 
-### Mesos
+### Meson
 
   ```bash
   sudo apt-get -y install meson 
