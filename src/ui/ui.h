@@ -1,9 +1,7 @@
-#ifndef UI_H
-#define UI_H
+#pragma once
 
 #include <gtk/gtk.h>
 
 extern GtkTextBuffer *log_buffer;
 GtkWidget *build_ui();
 
-#endif /* UI_H */
