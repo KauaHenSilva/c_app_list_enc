@@ -1,19 +1,16 @@
-#ifndef LISTENC_H
-#define LISTENC_H
+#pragma once
 
 #include <stdlib.h>
 
-// Definição da estrutura de nó da lista encadeada
-typedef struct Node {
+typedef struct listEnc {
     int data;
-    struct Node *next;
-} Node;
+    struct listEnc *next;
+} ListEnc;
 
-extern Node *lista;
+extern ListEnc *lista;
 
-void add_node(Node **head, int value);
-void remove_node(Node **head, int value);
-void print_list(Node *head);
-char *get_list_as_string(Node *head);
+void add_node(ListEnc **head, int value);
+void remove_node(ListEnc **head, int value);
+void print_list(ListEnc *head);
+char *get_list_as_string(ListEnc *head);
 
-#endif /* LISTENC_H */

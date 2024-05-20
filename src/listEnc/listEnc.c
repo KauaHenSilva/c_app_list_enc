@@ -1,66 +1,65 @@
 #include "listEnc.h"
 #include <gtk/gtk.h>
 
-Node *lista = NULL; // Lista global para armazenar os valores
+ListEnc *lista = NULL;
 
-// Funções para operações na lista encadeada
-void add_node(Node **head, int value)
+void add_node(ListEnc **head, int value)
 {
-    Node *new_node = g_malloc(sizeof(Node));
+    ListEnc *new_node = g_malloc(sizeof(ListEnc));
     new_node->data = value;
     new_node->next = *head;
     *head = new_node;
 }
 
-void remove_node(Node **head, int value)
+void remove_node(ListEnc **head, int value)
 {
-    Node *temp = *head, *prev = NULL;
-    while (temp != NULL && temp->data != value)
+    ListEnc *aux = *head, *ant = NULL;
+    while (aux != NULL && aux->data != value)
     {
-        prev = temp;
-        temp = temp->next;
+        ant = aux;
+        aux = aux->next;
     }
-    if (temp == NULL)
+
+    if (aux == NULL)
         return;
-    if (prev == NULL)
-    {
-        *head = temp->next;
-    }
+
+    if (ant == NULL)
+        *head = aux->next;
     else
-    {
-        prev->next = temp->next;
-    }
-    g_free(temp);
+        ant->next = aux->next;
+
+    g_free(aux);
 }
 
-void print_list(Node *head)
+void print_list(ListEnc *head)
 {
-    Node *current = head;
-    while (current != NULL)
+    ListEnc *aux = head;
+    while (aux != NULL)
     {
-        printf("%d -> ", current->data);
-        current = current->next;
+        printf("%d -> ", aux->data);
+        aux = aux->next;
     }
     printf("NULL\n");
 }
 
-char *get_list_as_string(Node *head)
+char *get_list_as_string(ListEnc *head)
 {
-    Node *current = head;
+    ListEnc *aux = head;
     size_t size = 256;
-    char *result = malloc(size);
     size_t len = 0;
-    len += snprintf(result + len, size - len, "Lista de valores: ");
-    while (current != NULL)
+
+    char *result = malloc(size);
+    while (aux != NULL)
     {
-        len += snprintf(result + len, size - len, "%d -> ", current->data);
-        current = current->next;
+        len += snprintf(result + len, size - len, "%d -> ", aux->data);
+        aux = aux->next;
         if (len >= size)
         {
             size *= 2;
             result = realloc(result, size);
         }
     }
+
     snprintf(result + len, size - len, "NULL\n");
     return result;
 }

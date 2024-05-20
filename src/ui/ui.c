@@ -2,23 +2,7 @@
 #include "../listEnc/listEnc.h"
 #include <gtk/gtk.h>
 
-GtkTextBuffer *log_buffer; // Buffer do log
-
-void log_operation(const char *operation, int value)
-{
-  GtkTextIter iter;
-  gchar *log_entry = g_strdup_printf("%s: %d\n", operation, value);
-  gtk_text_buffer_get_end_iter(log_buffer, &iter);
-  gtk_text_buffer_insert(log_buffer, &iter, log_entry, -1);
-  g_free(log_entry);
-}
-
-void log_message(const char *message)
-{
-  GtkTextIter iter;
-  gtk_text_buffer_get_end_iter(log_buffer, &iter);
-  gtk_text_buffer_insert(log_buffer, &iter, message, -1);
-}
+GtkTextBuffer *log_buffer;
 
 void create_value_entry_dialog(GtkWindow *parent, const char *title, void (*callback)(int))
 {
@@ -59,21 +43,26 @@ void on_remove_value(int value)
   remove_node(&lista, value);
 }
 
+void log_message(const char *message)
+{
+  GtkTextIter iter;
+  gtk_text_buffer_get_end_iter(log_buffer, &iter);
+  gtk_text_buffer_insert(log_buffer, &iter, message, -1);
+}
+
+
 static void adicionar_valor(GtkWidget *widget, gpointer data)
 {
   create_value_entry_dialog(GTK_WINDOW(data), "Adicionar Valor", on_add_value);
+  char *list_str = get_list_as_string(lista);
+  log_message(list_str);
 }
 
 static void remover_valor(GtkWidget *widget, gpointer data)
 {
   create_value_entry_dialog(GTK_WINDOW(data), "Remover Valor", on_remove_value);
-}
-
-static void exibir_valores(GtkWidget *widget, gpointer data)
-{
   char *list_str = get_list_as_string(lista);
   log_message(list_str);
-  free(list_str);
 }
 
 GtkTextBuffer *log_buffer = NULL;
@@ -93,9 +82,6 @@ GtkWidget *build_ui()
 
   button = gtk_builder_get_object(builder, "RemoverValor");
   g_signal_connect(button, "clicked", G_CALLBACK(remover_valor), NULL);
-
-  button = gtk_builder_get_object(builder, "ExibirValores");
-  g_signal_connect(button, "clicked", G_CALLBACK(exibir_valores), NULL);
 
   button = gtk_builder_get_object(builder, "quit");
   g_signal_connect(button, "clicked", G_CALLBACK(gtk_main_quit), NULL);
