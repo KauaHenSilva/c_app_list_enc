@@ -10,9 +10,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Install dependencies
 
 RUN apt-get update && apt-get install -y
-RUN apt-get install -y meson
-RUN apt-get install -y libgtk-3-dev
-RUN apt-get install -y ninja-build
+RUN apt-get -y install meson=0.56.2-0ubuntu1
+RUN apt-get -y install libgtk-3-dev=3.24.24-4ubuntu1
+RUN apt-get -y install ninja-build=1.10.0-1
 
 # Copy the source code
 COPY . /app
