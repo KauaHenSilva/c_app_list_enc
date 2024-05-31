@@ -1,15 +1,22 @@
-project('projeto', 'c')
+project(
+  'projeto',
+  'c',
+)
 
 gtk_dep = dependency('gtk+-3.0')
 
-subdir('src/listEnc')
+subdir('src/list')
 subdir('src/ui')
+
+includes = [includes_ui, include_list]
+
+libs = lib_ui 
+libs += lib_list
 
 executable(
   'main',
   'src/main.c',
   dependencies: [gtk_dep],
-  link_with: [ui_lib]
+  include_directories: includes,
+  link_with: [libs],
 )
-
-configure_file(input: 'screen.ui', output: 'screen.ui', copy: true)

@@ -1,5 +1,5 @@
 #include <gtk/gtk.h>
-#include "src/ui/ui.h"
+#include <uiMain.h>
 
 int main(int argc, char *argv[])
 {

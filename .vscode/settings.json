@@ -1,4 +1,10 @@
 {
   "C_Cpp.default.compileCommands": "/home/user/c_app_list_enc/builddir/compile_commands.json",
-  "C_Cpp.default.configurationProvider": "mesonbuild.mesonbuild"
+  "C_Cpp.default.configurationProvider": "mesonbuild.mesonbuild",
+  "files.associations": {
+    ".env.*": "dotenv",
+    ".prettierrc": "json",
+    "*.css": "css",
+    "gtk.h": "c"
+  }
 }

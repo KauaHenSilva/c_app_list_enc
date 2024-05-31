@@ -1,8 +1,12 @@
+includes_ui = include_directories(
+  'uiMain',
+  'dialog',
+)
+
+subdir('uiMain')
 subdir('dialog')
 
-ui_lib = static_library(
-  'ui',
-  'ui.c',
-  dependencies: [gtk_dep],
-  link_with: [list_enc, ui_dilog_lib]
-)
+lib_ui = [
+  ui_dilog_lib,
+  ui_main_lib,
+]
