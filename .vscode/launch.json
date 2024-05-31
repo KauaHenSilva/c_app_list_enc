@@ -1,0 +1,31 @@
+
+{
+  "version": "0.2.0",
+  "configurations": [
+      {
+          "name": "Executar meu_aplicativo",
+          "type": "cppdbg",
+          "request": "launch",
+          "program": "${workspaceFolder}/builddir/main",
+          "args": [],
+          "stopAtEntry": false,
+          "cwd": "${workspaceFolder}",
+          "environment": [],
+          "externalConsole": false,
+          "MIMode": "gdb",
+          "setupCommands": [
+              {
+                  "description": "Ativar impressora automática de variáveis",
+                  "text": "-enable-pretty-printing",
+                  "ignoreFailures": true
+              }
+          ],
+          "preLaunchTask": "Build com Meson",
+          "miDebuggerPath": "/usr/bin/gdb",
+          "logging": {
+              "moduleLoad": false,
+              "trace": false
+          }
+      }
+  ]
+}

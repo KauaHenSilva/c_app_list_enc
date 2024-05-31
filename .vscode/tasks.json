@@ -1,0 +1,26 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Configure Meson",
+      "type": "shell",
+      "command": "meson setup builddir",
+      "group": "build",
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "detail": "Configura o Meson build system"
+    },
+    {
+      "label": "Build com Meson",
+      "type": "shell",
+      "command": "ninja -C builddir",
+      "group": "build",
+      "dependsOn": "Configure Meson",
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "detail": "Compila o projeto usando Ninja"
+    }
+  ]
+}
