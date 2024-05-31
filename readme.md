@@ -1,6 +1,6 @@
 # Linked List and Graph in C
 
-This project is a simple implementation of a linked list and a graph in C. The linked list is used to store the snake's body in the snake game, and the
+This project is a simple application that demonstrates the use of linked lists in C. The application was developed using the GTK library for the graphical interface. The application allows the user to create a linked list, where the user can add and remove elements.
 
 ## 🚀 Getting Started
 
